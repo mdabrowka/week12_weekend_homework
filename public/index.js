@@ -6,11 +6,8 @@ var app = function(){
     const url = 'https://newsapi.org/v2/top-headlines?' +
             'sources=bbc-news&' +
             'apiKey=afd0f79d78284450b15a185df3c14f55'
-
-
     makeRequest(url, requestComplete);
     window.alert("request 1 complete");
-
   });
 
     // buzzfeed - should load after clicking on the button
@@ -22,28 +19,17 @@ var app = function(){
                'apiKey=afd0f79d78284450b15a185df3c14f55'
      makeRequest(url2, requestComplete);
      window.alert("request 2 complete");
-
-
    });
-
 }
 
 const requestComplete = function() {
-
   // parse json and load into the articles
-
   if(this.status !== 200) {
     return;
   }
   const jsonString = this.responseText;
-
-  console.log("Response text" + jsonString);
-
   articles = JSON.parse(jsonString);
   getNews(articles);
-
-  console.log("JSON loaded ");
-  console.log(articles.articles);
 }
 
 const makeRequest = function(url, callback) {
@@ -54,9 +40,6 @@ const makeRequest = function(url, callback) {
 }
 
 const getNews = function(articles) {
-
-  console.log("Articles: " + articles.articles)
-
   const ul = document.querySelector('#news-content');
   articles.articles.forEach(function(article) {
   const liTitle = document.createElement('li');
@@ -75,10 +58,5 @@ const getNews = function(articles) {
 //   image.src = article.urlToImage;
 //   return image;
 // }
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', app);
