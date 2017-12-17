@@ -1,6 +1,21 @@
 // articles = [];
 var app = function(){
 
+  window.addEventListener('load', function() {
+  var canvas = document.getElementById('main-canvas');
+  var context = canvas.getContext('2d');
+
+  // var img = document.createElement('img');
+  // img.src = "cat.png";
+  //
+  // var drawCat = function(){
+  //   context.drawImage(img, 200, 200, 90, 90);
+  // }
+  //
+  // img.addEventListener('load', drawCat);
+
+});
+
   // when loading page, get articles
   const url = 'https://newsapi.org/v2/top-headlines?' +
           'sources=bbc-news&' +
@@ -43,18 +58,23 @@ const makeRequest = function(url, callback) {
 const getNews = function(articles) {
 const ul = document.querySelector('#news-content');
 articles.articles.forEach(function(article) {
-  const liTitle = document.createElement('li');
-
-
-  liTitle.innerText = article.title;
-
-  ul.appendChild(liTitle);
-
+const liTitle = document.createElement('li');
+liTitle.innerText = article.title;
+ul.appendChild(liTitle);
+const liImage = document.createElement('li');
+liImage.innerHTML = '';
+const image = document.createElement('img');
+image.src = article.urlToImage;
+ul.appendChild(image);
 
 });
 }
 
-
+// const createImage = function(urlToImage) {
+//   const image = document.createElement('img');
+//   image.src = article.urlToImage;
+//   return image;
+// }
 
 
 
