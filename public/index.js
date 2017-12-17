@@ -42,16 +42,14 @@ const makeRequest = function(url, callback) {
 
 const getNews = function(articles) {
 const ul = document.querySelector('#news-content');
-
-console.log("tu" + articles.articles);
-
 articles.articles.forEach(function(article) {
-
-
-
   const liTitle = document.createElement('li');
+
+
   liTitle.innerText = article.title;
+
   ul.appendChild(liTitle);
+
 
 });
 }
