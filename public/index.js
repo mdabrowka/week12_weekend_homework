@@ -3,7 +3,14 @@ var app = function(){
   const url = 'https://newsapi.org/v2/top-headlines?' +
           'sources=bbc-news&' +
           'apiKey=afd0f79d78284450b15a185df3c14f55'
-  makeRequest(url, requestComplete)
+
+
+  const getNews = document.querySelector('#get-news');
+  getNews.addEventListener('click', function () {
+    makeRequest(url, requestComplete);
+  });
+
+
 }
 
 const requestComplete = function() {
@@ -22,7 +29,12 @@ const makeRequest = function(url, callback) {
   request.open('GET', url);
   request.addEventListener('load', callback);
   request.send();
-}
+
+
+  }
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', app);
